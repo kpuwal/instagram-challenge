@@ -34,6 +34,17 @@ feature 'pictures' do
     end
   end
 
+  context 'validating picture submission' do
+    it 'does not let you submit a title that is too short' do
+      visit '/pictures'
+      click_link 'Add Picture'
+      fill_in 'Title', with: 'kf'
+      click_button 'Create Picture'
+      expect(page).not_to have_css 'h2', text: 'kf'
+      expect(page).to have_content 'error'
+    end
+  end
+
   context 'viewing pictures' do
 
     let!(:sky){ Picture.create(title:'sky', description: 'Deep blue sky') }
