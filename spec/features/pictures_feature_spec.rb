@@ -23,6 +23,7 @@ feature 'pictures' do
 
   context 'creating picture' do
     scenario 'prompts user to fill out a form, then displays the new picture' do
+      user_sign_up
       visit '/pictures'
       click_link 'Add Picture'
       fill_in 'Title', with: 'sky'
@@ -36,6 +37,7 @@ feature 'pictures' do
 
   context 'validating picture submission' do
     it 'does not let you submit a title that is too short' do
+      user_sign_up
       visit '/pictures'
       click_link 'Add Picture'
       fill_in 'Title', with: 'kf'
@@ -59,18 +61,18 @@ feature 'pictures' do
   end
 
   context 'editing pictures' do
-
     before { Picture.create title: 'sky' }
 
     scenario 'let a user edit a picture' do
-     visit '/pictures'
-     click_link 'Edit sky'
-     fill_in 'Title', with: 'sky'
-     fill_in 'Description', with: 'Deep blue sky'
-     click_button 'Update Picture'
-     expect(page).to have_content 'sky'
-     expect(page).to have_content 'Deep blue sky'
-     expect(current_path).to eq '/pictures'
+      user_sign_up
+      visit '/pictures'
+      click_link 'Edit sky'
+      fill_in 'Title', with: 'sky'
+      fill_in 'Description', with: 'Deep blue sky'
+      click_button 'Update Picture'
+      expect(page).to have_content 'sky'
+      expect(page).to have_content 'Deep blue sky'
+      expect(current_path).to eq '/pictures'
     end
   end
 
@@ -79,6 +81,7 @@ feature 'pictures' do
     before { Picture.create title: 'sky' }
 
     scenario 'removes a picture when a user clicks a delete link' do
+      user_sign_up
       visit '/pictures'
       click_link 'Delete sky'
       expect(page).not_to have_content 'sky'
