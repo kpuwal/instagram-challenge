@@ -2,9 +2,8 @@ class PicturesController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
   before_action :find_picture, only: [:show, :edit, :update, :destroy]
 
-
   def index
-    @picture = Picture.all.order('created_at DESC')
+    @pictures = Picture.all.order('created_at DESC')
   end
 
   def new
@@ -13,8 +12,10 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    @picture.user = current_user
+
     if @picture.save
-      redirect_to pictures_path
+      redirect_to pictures_path, notice: "Successfully created new Picture"
     else
       render 'new'
     end
@@ -33,14 +34,14 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture.destroy
-    flash[:notice] = 'Picture deleted successfully'
-    redirect_to '/pictures'
+    flash[:notice] = "Picture deleted successfully"
+    redirect_to root_path
   end
 
   private
 
   def picture_params
-    params.require(:picture).permit(:title, :description)
+    params.require(:picture).permit(:title, :description, :image)
   end
 
   def find_picture

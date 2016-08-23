@@ -9,7 +9,7 @@ feature 'pictures' do
     end
   end
 
-  context 'restaurants have been added' do
+  context 'pictures have been added' do
     before do
       Picture.create(title: 'sky')
     end
