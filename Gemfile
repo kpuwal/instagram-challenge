@@ -12,6 +12,7 @@ gem 'paperclip', '~> 5.1'
 gem 'haml'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
+gem 'html2haml'
 
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -30,6 +31,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem 'spring'
 end

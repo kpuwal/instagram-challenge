@@ -1,2 +1,6 @@
-- @pictures.each do |picture|
-  %h2= link_to picture.title, picture
+- if @pictures.any?
+  - @pictures.each do |picture|
+    = link_to (image_tag picture.image.url(:medium)), picture
+    %h2= link_to picture.title, picture
+- else
+  %p= "No Pictures added yet!"
