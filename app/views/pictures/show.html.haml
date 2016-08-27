@@ -5,6 +5,7 @@
 Submitted by
 = @picture.user.email
 %br/
+
 = link_to "Back", root_path
 - if current_user != nil
   -if @picture.user_id != current_user.id
@@ -12,3 +13,8 @@ Submitted by
   -else
     = link_to "Edit", edit_picture_path
     = link_to "Delete", picture_path, method: :delete, data: { confirm: "Are you sure?" }
+
+- if @picture.comments.any?
+  - @picture.comments.each do |comment|
+    %p= comment.comment
+    %p= comment.user.email
