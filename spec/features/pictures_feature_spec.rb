@@ -26,7 +26,7 @@ feature 'Picture' do
     scenario 'should display pictures title on the front page' do
       expect(page).to have_content 'The Armadillo'
       expect(current_path).to eq '/pictures'
-      expect(page).to have_content 'Successfully created new Picture'
+      expect(page).to have_content 'Successfully added new Picture'
     end
 
     scenario 'should display a picture on the show page' do

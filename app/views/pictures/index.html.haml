@@ -1,6 +1,10 @@
-- if @pictures.any?
-  - @pictures.each do |picture|
-    = link_to (image_tag picture.image.url(:medium)), picture
-    %h2= link_to picture.title, picture
-- else
-  %p= "No Pictures added yet!"
+#pictures.transitions-enabled
+  - if @pictures.any?
+    - @pictures.each do |picture|
+      .box.panel.panel-default
+        = link_to (image_tag picture.image.url(:medium)), picture
+        .panel-body
+          %h2= link_to picture.title, picture
+          %p= pluralize picture.comments.count, 'comment'
+  - else
+    %p= "No Pictures added yet!"

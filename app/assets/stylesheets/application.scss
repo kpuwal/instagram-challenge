@@ -9,9 +9,125 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
+ *= require 'masonry/transitions'
  *= require_tree .
  *= require_self
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+body {
+	background: rgb(242, 242, 238);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 100;
+}
+
+.navbar-default {
+    background-color: rgb(242, 242, 238);
+    border-color: rgb(242, 242, 238);
+}
+.navbar-brand-img {
+  transform: scale(0.3, 0.3);
+  display:inline-block;
+  float: left;
+  position: absolute;
+  padding: 0px;
+  height: 30px;
+  width: auto;
+}
+
+
+#pictures {
+  margin: 0 auto;
+  width: 100%;
+  .box {
+	  margin: 50px 10px 10px 10px;
+	  width: 300px;
+    border-color: #E5E5E5;
+	  border-radius: 4px;
+	  text-align: center;
+	  img {
+	  	max-width: 100%;
+	  	height: auto;
+	  }
+	  h2 {
+	  	font-size: 22px;
+	  	margin: 0;
+	  	padding: 25px 10px;
+	  	a {
+				color: #474747;
+        &:hover {
+        	text-decoration: none;
+        }
+	  	}
+	  }
+	  .user {
+	  	font-size: 12px;
+	  	border-top: 1px solid #EAEAEA;
+			padding: 15px;
+			margin: 0;
+	  }
+	}
+}
+
+#edit_page {
+	.current_image {
+		img {
+			display: block;
+			margin: 20px 0;
+		}
+	}
+}
+
+#pictures_show {
+	.panel-heading {
+		padding: 0;
+	}
+	.picture_image {
+		img {
+			max-width: 100%;
+			width: 100%;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.panel-body {
+		padding: 35px;
+		h1 {
+			margin: 0 0 10px 0;
+		}
+		.description {
+			color: #868686;
+			line-height: 1.75;
+			margin: 0;
+		}
+	}
+	.panel-footer {
+		padding: 20px 35px;
+		p {
+			margin: 0;
+		}
+		.user {
+			padding-top: 8px;
+		}
+	}
+  .panel-comment {
+    padding: 35px;
+
+    .description {
+      color: #868686;
+      line-height: 1.75;
+      margin: 0;
+    }
+    .user {
+      padding-top: 8px;
+    }
+  }
+}
+
+textarea {
+	min-height: 250px;
+}

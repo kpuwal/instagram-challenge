@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
     @picture.user = current_user
 
     if @picture.save
-      redirect_to pictures_path, notice: "Successfully created new Picture"
+      redirect_to pictures_path, notice: "Successfully added new Picture"
     else
       render 'new'
     end
@@ -29,13 +29,12 @@ class PicturesController < ApplicationController
 
   def update
     @picture.update(picture_params)
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   def destroy
     @picture.destroy
-    flash[:notice] = "Picture deleted successfully"
-    redirect_to root_path
+    redirect_to pictures_path, notice: "Picture deleted successfully"
   end
 
   private
