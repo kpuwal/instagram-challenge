@@ -3,10 +3,10 @@
     .panel.panel-default
       .panel-heading.picture_image
         =image_tag @picture.image.url(:high)
+
       .panel-body
         %h1= @picture.title
         %p.description= @picture.description
-
       .panel-footer
         .row
           .col-md-6
@@ -21,7 +21,7 @@
                 -else
                   = link_to "Edit", edit_picture_path, class: "btn btn-default"
                   = link_to "Delete", picture_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
-                  
+
       - if @picture.comments.any?
         .panel-comment
           - @picture.comments.each do |comment|

@@ -7,3 +7,6 @@ $ ->
     $('#pictures').masonry
       itemSelector: '.box'
       isFitWidth: true
+$ ->
+  $('.nav.navbar-brand-img').click ->
+    window.location.reload()
