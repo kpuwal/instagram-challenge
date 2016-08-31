@@ -28,12 +28,10 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-default {
   .container {
     ul>li {
-      // margin-top: 12px;
-      margin-bottom: 0px;
-      padding-bottom: 0px;
       a {
         &:hover {
           color: #1484F7;
+					// 1484F7 blue
         }
       }
     }
@@ -53,6 +51,19 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0px;
   height: 30px;
   width: auto;
+}
+
+.color {
+	color: #868686;
+	font-size: 11px;
+	a {
+		color: #868686;
+		text-decoration: none;
+		&:hover {
+			color: #ED6E6E;
+		}
+
+	}
 }
 
 

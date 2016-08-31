@@ -14,12 +14,14 @@ gem 'jquery-rails'
 gem 'masonry-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'jquery-turbolinks'
 
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'rspec-collection_matchers'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development, :test do

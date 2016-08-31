@@ -3,20 +3,26 @@
     .panel.panel-default
       .panel-heading.picture_image
         =image_tag @picture.image.url(:high)
-
       .panel-body
         %h1= @picture.title
         %p.description= @picture.description
       .panel-footer
         .row
           .col-md-6
+            %p
+            .panel-body.color
+              %span.glyphicon.glyphicon-comment
+                = @picture.comments.count
+              |
+              &#10084;
+              = @picture.endorsements.count
             %p.user
             Submitted by
             = @picture.user.email
           .col-md-6
             .btn-group.pull-right
               - if current_user != nil
-                -if @picture.user_id != current_user.id
+                - if @picture.user_id != current_user.id
                   %p= link_to "Leave a Comment", new_picture_comment_path(@picture), class: "btn btn-default"
                 -else
                   = link_to "Edit", edit_picture_path, class: "btn btn-default"
@@ -26,4 +32,6 @@
         .panel-comment
           - @picture.comments.each do |comment|
             %p.description= comment.comment
-            %p.user= comment.user.email
+            %p.user
+            by
+            = comment.user.email

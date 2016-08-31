@@ -10,9 +10,8 @@ feature 'Endorsing Pictures' do
 
   context 'for logged in user' do
     scenario 'can endorse a picture, which updates endorsement count', js: true do
-      click_link 'The Armadillo'
-      click_link 'Endorse'
-      expect(page).to have_content('1 endorsement')
+      click_link 'heart'
+      expect(page).to have_content('1')
     end
   end
 end

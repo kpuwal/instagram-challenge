@@ -4,9 +4,17 @@
       - @pictures.each do |picture|
         .box.panel.panel-default
           = link_to (image_tag picture.image.url(:medium)), picture
-          .panel-body
+          .panel-body.color
             %h2= link_to picture.title, picture
-            %p= pluralize picture.comments.count, 'comment'
+            %span.glyphicon.glyphicon-comment
+              = picture.comments.count
+            |
+            - if current_user && picture.user_id != current_user.id
+              = link_to '&#10084;'.html_safe, picture_endorsements_path(picture), class: 'endorsements-link', id: 'heart'
+              %span.endorsements_count= picture.endorsements.count
+            - else
+              &#10084;
+              = picture.endorsements.count
     - else
       .col-md-8.col-md-offset-2
         %h1= "No Pictures added yet!"
